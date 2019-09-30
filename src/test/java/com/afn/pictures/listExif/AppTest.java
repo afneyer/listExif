@@ -29,7 +29,7 @@ public class AppTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Rigorous Test :-)
      */
     public void testApp()
     {
@@ -38,7 +38,7 @@ public class AppTest
     
     public void testGetExtension() {
     	String ext = App.getExtension("desktop.ini");
-    	assertTrue(ext == "ini");
+    	assertTrue(ext.equals("ini"));
     }
     
     public void testIgnoreFile() {
