@@ -30,7 +30,7 @@ public class App {
 				/* Find earliest and latest date each photo directory */
 				Date earliestDate = null;
 				Date latestDate = null;
-				if (!photoDirName.startsWith("+")) {
+				if (!photoDirName.startsWith("+") && ! photoDirName.contains("SugarSync")) {
 					for (final File photo : photoDir.listFiles()) {
 						String fileName = photo.getName();
 						if (photo.isFile() && !ignoreFile(fileName)) {
@@ -77,9 +77,16 @@ public class App {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String edString = df.format(earliestDate);
 		String ldString = df.format(latestDate);
-		String newFileName = edString + " - " + ldString + " " + cleanName;
+		String newFileName = edString + " -- " + ldString + " " + cleanName;
 		System.out.format("Old Name = |%s|\n", photoDir.getName());
 		System.out.format("New Name = |%s|\n", newFileName);
+		if (newFileName.contentEquals(photoDir.getName())) {
+			// rename file
+			File newFile = new File(photoDir.getParent() + "\\/" + photoDir.getName());
+	    	// photoDir.renameTo(newFile);
+	    	System.out.format("Renaming    |%s|\n", photoDir.getName());
+			System.out.format("         to |%s|\n", newFileName);
+		}
 
 	}
 

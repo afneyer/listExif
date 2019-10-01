@@ -52,7 +52,7 @@ public class AppTest
     	String dirPath = "C:/afndev/listExif/testData/old";
     	File oldDir = new File(dirPath);
     	assertTrue(oldDir.mkdir());
-    	File oldFile = new File(dirPath + "\\/" + "oldFile");
+    	File oldFile = new File(dirPath + "\\/" + "oldFile.txt");
     	try {
 			oldFile.createNewFile();
 		} catch (IOException e) {
