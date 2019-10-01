@@ -1,5 +1,8 @@
 package com.afn.pictures.listExif;
 
+import java.io.File;
+import java.io.IOException;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -43,5 +46,26 @@ public class AppTest
     
     public void testIgnoreFile() {
     	assertTrue(App.ignoreFile("desktop.ini"));
+    }
+    
+    public void testRenameTo() {
+    	String dirPath = "C:/afndev/listExif/testData/old";
+    	File oldDir = new File(dirPath);
+    	assertTrue(oldDir.mkdir());
+    	File oldFile = new File(dirPath + "\\/" + "oldFile");
+    	try {
+			oldFile.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail();
+		}
+    	
+    	
+    	File newFile = new File(oldDir.getParent() + "\\/" + "new");
+    	if ( newFile.exists() ) {
+    		newFile.delete();
+    	}
+    	oldDir.renameTo(newFile);
+    	assertTrue( newFile.exists());
     }
 }
